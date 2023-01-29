@@ -1,19 +1,28 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import axios from 'axios';
 import './CreateAccountScreen.scss';
+import { UserContext } from '../Context/UserContext';
 const CreateAccountScreen = () => {
-
+    const userContextValue = useContext(UserContext);
+    console.log(userContextValue)
     const onSubmit = async (e) => {
         e.preventDefault();
-        const result = await axios.post(`http://localhost:5000/api/employee/register`, {
-            username: "A",
-            email: "A",
-            phone: "A",
-            password: "A"
-        });
-        console.log(result);
+        userContextValue.dispatch({ type: "CREATE_USER" });
+        try {
+            const userData = {
+                username: "A",
+                email: "A",
+                phone: "A",
+                password: "A"
+            };
+            const result = await axios.post(`http://localhost:5000/api/employee/register`, userData);
+            userContextValue.dispatch({ type: "CREATE_SUCCESS", payload: userData });
+        }
+        catch (e) {
+            console.log(e)
+            userContextValue.dispatch({ type: "CREATE_FAIL" });
+        }
     }
-
     return (
         <div className='login-container'>
             <form onSubmit={(e) => onSubmit(e)}>
