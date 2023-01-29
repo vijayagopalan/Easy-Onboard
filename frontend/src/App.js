@@ -19,7 +19,8 @@ function App() {
           <Routes>
             <Route path={'/'} exact element={<Home />} />
             <Route path={'/login'} exact element={<LoginScreen />} />
-            <Route path={'/newaccount'} exact element={<CreateAccountScreen />} />
+            <Route path={'/register'} exact element={<CreateAccountScreen />} />
+            <Route path={'*'} exact element={<div>Page Not Found</div>} />
           </Routes>
         </div>
         <footer>

@@ -5,11 +5,11 @@ const CreateAccountScreen = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        const result = await axios.post(`/api/employee/register`, {
-            username: "",
-            email: "",
-            phone: "",
-            password: ""
+        const result = await axios.post(`http://localhost:5000/api/employee/register`, {
+            username: "A",
+            email: "A",
+            phone: "A",
+            password: "A"
         });
         console.log(result);
     }
