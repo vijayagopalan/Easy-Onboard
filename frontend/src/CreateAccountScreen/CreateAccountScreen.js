@@ -15,7 +15,7 @@ const CreateAccountScreen = () => {
                 phone: "A",
                 password: "A"
             };
-            const result = await axios.post(`http://localhost:5000/api/employee/register`, userData);
+            await axios.post(`http://localhost:5000/api/employee/register`, userData);
             userContextValue.dispatch({ type: "CREATE_SUCCESS", payload: userData });
         }
         catch (e) {
